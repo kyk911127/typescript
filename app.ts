@@ -1,4 +1,12 @@
 /**
+ * git연동
+ * git remote add origin [주소]
+ * git branch -m master main
+ * git pull origin main --allow-unrelated-histories
+ * git push -u origin main
+ */
+
+/**
  * tst --init
  * tsconfig.json 파일 생성
  * typescript 설정 옵션
@@ -45,12 +53,38 @@ const getUser = (id: number): object => {
 };
 
 /**
-const getUser = (id: number): {
-    id: number;
-    name: string;
-    age: number;
-    complete: boolean;
-} => {
-    return null;
-};
+ * 인터페이스
+ * 메서드
+ * ? : 선택적 프로퍼티
+ * readonly : 읽기전용 프로퍼티
  */
+interface User {
+    readonly id: number;
+    name: string;
+    age?: number;   //  선택적 프로퍼티
+    complete: boolean;
+    // addComment (comment: string): string;
+    addComment?: (comment: string) => string;
+}
+
+let user1 = {
+    id: 1,
+    name: '건빵규',
+    age: 33,
+    complete: false
+}
+
+const getUserInfo = (id: number): User => {
+    return {
+        id: 1,
+        name: '건빵규',
+        // age: 33,
+        complete: false
+    };
+};
+
+const saveUserInfo = (user: User): void => {
+    // user.id = 2;    // readonly 오류
+};
+
+saveUserInfo(user1);

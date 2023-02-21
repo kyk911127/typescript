@@ -1,4 +1,11 @@
 /**
+ * git연동
+ * git remote add origin [주소]
+ * git branch -m master main
+ * git pull origin main --allow-unrelated-histories
+ * git push -u origin main
+ */
+/**
  * tst --init
  * tsconfig.json 파일 생성
  * typescript 설정 옵션
@@ -38,13 +45,21 @@ var complete = false;
 var getUser = function (id) {
     return {};
 };
-/**
-const getUser = (id: number): {
-    id: number;
-    name: string;
-    age: number;
-    complete: boolean;
-} => {
-    return null;
+var user1 = {
+    id: 1,
+    name: '건빵규',
+    age: 33,
+    complete: false
 };
- */ 
+var getUserInfo = function (id) {
+    return {
+        id: 1,
+        name: '건빵규',
+        // age: 33,
+        complete: false
+    };
+};
+var saveUserInfo = function (user) {
+    // user.id = 2;    // readonly 오류
+};
+saveUserInfo(user1);
