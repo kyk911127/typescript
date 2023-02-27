@@ -8,12 +8,12 @@
      */
 
     /**
-     * tsc --init
-     * tsconfig.json 파일 생성
-     * typescript 설정 옵션
-     * 
      * npm i -g typescript
-     * typescript 설치
+     *      typescript 전역 설치, node 설치 필수
+     * 
+     * tsc --init
+     *      tsconfig.json 파일 생성
+     *      typescript 설정 옵션
      */
 
     /**
