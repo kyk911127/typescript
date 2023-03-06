@@ -1,16 +1,14 @@
-import User from "./User";
+import Subject from "./Subject";
 import { data } from "./data";
 import Collection from "./Collection";
 
-
-console.log("----------User List----------");
+console.log("----------Subject List----------");
 for (let i = 0; i < data.length; i++) {
-// for (let i: number = 0; i < data.length; i++) {
-    const user = new User(data[i].id, data[i].task, data[i].complete);
-    // const item: Item = new Item(data[i].id, data[i].task, data[i].complete);
-    user.printUserInfo();
-};
-
+  // for (let i: number = 0; i < data.length; i++) {
+  const subject = new Subject(data[i].id, data[i].title, data[i].complete);
+  // const item: Item = new Item(data[i].id, data[i].task, data[i].complete);
+  subject.printSubjectDetail();
+}
 
 /**
  * JaxaScript에서는 가변인자를 통해 함수호출이 가능했지만
@@ -21,41 +19,47 @@ function add(first: string, second: string): string;
 function add(first: number, second: number): number;
 
 function add(first: any, second: any): any {
-    console.log(first + second);
+  console.log(first + second);
 }
 
 add(10, 20);
-add('10', '20');
-
+add("10", "20");
 
 /**
- * UserCollection 구현 
+ * Collection 구현
  */
-console.log("----------UserCollection 구현----------");
-const sampleUsers : User [] = data.map((item) => new User(item.id, item.task, item.complete));
-const myUserCollection = new Collection("All User List", sampleUsers);
+console.log("----------Collection 구현----------");
+const sampleSubjects: Subject[] = data.map(
+  (item) => new Subject(item.id, item.title, item.complete)
+);
+const collection = new Collection("=====전체 과목 목록=====", sampleSubjects);
 
-myUserCollection.addUser("TypeScript 공부중");
-myUserCollection.addUser("React 공부중");
+collection.addSubject("Node Express");
+collection.addSubject("NestJs");
 
-myUserCollection.setComplete(3, true);
+collection.setComplete(3, true);
 
-console.log(`${myUserCollection.title}`);
-myUserCollection.users.forEach((item) => item.printUserInfo());
+console.log(`${collection.title}`);
 
+// collection.removeComplete();
+
+// collection.subjects.forEach((item) => item.printSubjectDetail());
+collection.getSubject(true).forEach((item) => item.printSubjectDetail());
+console.log("=====미완료된 과목 목록=====");
+collection.getSubject(false).forEach((item) => item.printSubjectDetail());
 
 /**
  * 함수의 반환
- * 타입 추론, void, never 
+ * 타입 추론, void, never
  * void : undefined 또는 null을 반환
  * never : 반환을 하지 않는다 ex) 예외처리
  */
-function success(flag? : true): void {
-    return null || undefined;
+function success(flag?: true): void {
+  return null || undefined;
 }
 
 function error(message?: string): never {
-    throw Error(message);
+  throw Error(message);
 }
 
 /**
@@ -64,7 +68,7 @@ function error(message?: string): never {
  */
 const array1: string[] = ["user1", "user2", "user3"];
 const array2 = ["user1", "user2", "user3"]; // 타입 추론
-const array3: (string|number)[] = ['string', 1234];    // 배열에는 여러개의 타입 지정 가능
+const array3: (string | number)[] = ["string", 1234]; // 배열에는 여러개의 타입 지정 가능
 array3[2] = 4444;
 array3[3] = "추가";
 // array[4] = false; // 컴파일 에러, 선언되지 않은 타입
@@ -76,4 +80,3 @@ array3[3] = "추가";
  */
 const tuples: [string, number] = ["필수값 입력", 10];
 // tuples[0] = 10; // 컴파일 에러, 0번째에는 string만 입력 가능
-
