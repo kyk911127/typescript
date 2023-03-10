@@ -1,6 +1,6 @@
 import Subject from "./model/Subject";
 import { data } from "./data";
-import Collection from "./service/Collection";
+import SubjectService from "./service/SubjectService";
 
 console.log("----------Subject List----------");
 for (let i = 0; i < data.length; i++) {
@@ -26,27 +26,27 @@ add(10, 20);
 add("10", "20");
 
 /**
- * Collection 구현
+ * SubjectService 구현
  */
-console.log("----------Collection 구현----------");
+console.log("----------subjectService 구현----------");
 const sampleSubjects: Subject[] = data.map(
   (item) => new Subject(item.id, item.title, item.complete)
 );
-const collection = new Collection("=====전체 과목 목록=====", sampleSubjects);
+const subjectService = new SubjectService("=====전체 과목 목록=====", sampleSubjects);
 
-collection.addSubject("Node Express");
-collection.addSubject("NestJs");
+subjectService.addSubject("Node Express");
+subjectService.addSubject("NestJs");
 
-collection.setComplete(3, true);
+subjectService.setComplete(3, true);
 
-console.log(`${collection.title}`);
+console.log(`${subjectService.title}`);
 
-// collection.removeComplete();
+// subjectService.removeComplete();
 
-// collection.subjects.forEach((item) => item.printSubjectDetail());
-collection.getSubjects(true).forEach((item) => item.printSubjectDetail());
+// subjectService.subjects.forEach((item) => item.printSubjectDetail());
+subjectService.getSubjects(true).forEach((item) => item.printSubjectDetail());
 console.log("=====미완료된 과목 목록=====");
-collection.getSubjects(false).forEach((item) => item.printSubjectDetail());
+subjectService.getSubjects(false).forEach((item) => item.printSubjectDetail());
 
 /**
  * 함수의 반환
