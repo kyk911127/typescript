@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "tsc --build --clean",
     "start:build": "tsc -w",
-    "start:run": "nodemon build/index.js",
+    "start:run": "nodemon build/subject/index.js",
     "start": "concurrently npm:start:*"
   },
   "repository": {
