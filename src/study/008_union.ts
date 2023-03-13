@@ -16,6 +16,10 @@
         showDisplay: () => void,
     }
 
+    interface Func {
+        (id: number, name: string): number;
+    }
+
     const getUser = (user: Customer | Employee) => {
         console.log(user.name);
         console.log(user.showDisplay());
